@@ -152,9 +152,7 @@ int checkMagicArray (int my_array[][8]){
 		}
 		
 		if(num_fila!=num_colum)return 0;
-		
-		cout<<"bandera"<<endl;
-		
+				
 		reslt = num_fila;
 		
 		num_fila=0;
