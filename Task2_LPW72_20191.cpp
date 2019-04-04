@@ -22,7 +22,8 @@ using namespace std;
 		
 	int magic_square[8][8] = {{64,2,3,61,60,6,7,57},{9,55,54,12,13,51,50,16},{17,47,46,20,21,43,42,24},{40,26,27,37,36,30,31,33},{32,34,35,29,28,38,39,25},{41,23,22,44,45,19,18,48},{49,15,14,52,53,11,10,56},{8,58,59,5,4,62,63,1}};
 	
-		
+	int checkMagicArray (int my_array[][8]);
+
 /* 2. Elabore una funcion que verifica que una fecha sea ingresada correctamente. La fecha se ingresa como una variable del tipo de la 
 	estructura Calendario (esta estructura es lo que se conoce como un campo de bits ya que cada miembro de la estructura comparte cierto
 	numero de bits de una misma variable miembro de la estructura). 
@@ -135,4 +136,40 @@ int main()
 		cout<<"Mal calculada la serie de cuadrados, vuelve a intentar :-("<<endl;
 	
 	return 0;
+}
+
+int checkMagicArray (int my_array[][8]){
+    
+	int filas;
+    int columnas;
+    int reslt = 0 , num_fila=0 , num_colum=0 , num_diag1 = 0, num_diag2 = 0, n_aux = 0;
+        
+    for(filas =0;filas<8;filas++){
+    	for(columnas=0;columnas<8;columnas++){
+    		num_fila = num_fila + my_array [filas][columnas];
+    		num_colum = num_colum + my_array [columnas][filas];
+    		
+		}
+		
+		if(num_fila!=num_colum)return 0;
+		
+		cout<<"bandera"<<endl;
+		
+		reslt = num_fila;
+		
+		num_fila=0;
+		num_colum=0;
+		
+		num_diag1 = num_diag1 + my_array [filas][filas]	;
+		num_diag2 = num_diag2 + my_array [7-filas][7-filas]	;
+	}  
+		
+		cout<<num_diag2<<num_diag1<<reslt<<endl;
+		
+		if (num_diag2==num_diag1&&num_diag1==reslt){
+			return 1;
+		}
+		else {
+			return 0;
+		}  
 }
