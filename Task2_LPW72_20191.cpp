@@ -51,6 +51,7 @@ struct Calendario{
   unsigned short int anio:7; //7 bits de una variable unsigned short
 };
 
+bool checkDate (Calendario struc);
 
 /* 3.Diseñe una funcion que recibe 2 parametros de entrada, el primero es un string que debe imprimirse cierto numero de veces. 
     El numero de veces va estar indicado por el segundo parametro que debe ser de tipo int. La funcion debe contar con parametros
@@ -171,3 +172,38 @@ int checkMagicArray (int my_array[][8]){
 			return 0;
 		}  
 }
+
+bool checkDate (Calendario struc){
+
+    int anio = 2000 + struc.anio;
+    
+    int div4 = anio%4;
+    int div100 = anio%100;
+    int div400 = anio%400;
+    int bis;
+    
+    if(div4==0&&div100==0&&div400==0)
+        bis=1;
+    else if (div4==0&&div100!=0)
+        bis=1;
+    else
+        bis=0;
+    
+    if (struc.dia<1||struc.dia>31)
+        return false;
+    else if (struc.mes<1||struc.mes>12)
+        return false;
+    else if(struc.anio<0||struc.anio>127)
+        return false;
+    else if ((struc.mes==4||struc.mes==6||struc.mes==9||struc.mes==11)&&struc.dia>30)
+        return false;
+    else if (struc.mes==2&&struc.dia>29)
+        return false;
+    else if (bis==1&&struc.mes==2&&struc.dia!=29)
+        return false;
+    else if (bis==0&&struc.mes==2&&struc.dia!=28)
+        return false;
+    else
+        return true;
+}
+    
