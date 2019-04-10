@@ -6,6 +6,7 @@
 
 #include<iostream>
 #include<string>
+#include<cmath>
 
 
 using namespace std;
@@ -58,7 +59,8 @@ bool checkDate (Calendario struc);
 	por defecto, es decir, debe imprimir algun string por lo menos una vez a pesar de que no se le pase ningun parametro string ni ningun
 	parametro int. Si la funcion recibe un numero negativo como parametro de entrada entonces se debe detener la ejecución de la funcion
     con un mensaje de despedida. La funcion se debe llamar printHelloMsg y no es necesario que tenga valor de retorno*/
-	
+
+void printHelloMsg (string str="No se ingreso un String", int n=0);
    
 /* 4. Recursion: Es una propiedad que tienen las funciones en diversos lenguajes de programacion, incluido C++ de poder invocarse a si mismas.
 	  Es decir, una funcion es recursiva cuando en el bloque de codigo que la compone existe una linea de codigo en la que ejecuta un llamado
@@ -84,7 +86,7 @@ bool checkDate (Calendario struc);
 	  preprocesador #include<nombre_libreria>. Recuerde declarar la funcion antes de la funcion main y de hacer la definicion de la funcion
 	  despues del bloque de codigo de la funcion main.
 	  */
-	  
+int serieCuadrados(int serie);	  
 
 int main()
 {
@@ -163,8 +165,6 @@ int checkMagicArray (int my_array[][8]){
 		num_diag2 = num_diag2 + my_array [7-filas][7-filas]	;
 	}  
 		
-		cout<<num_diag2<<num_diag1<<reslt<<endl;
-		
 		if (num_diag2==num_diag1&&num_diag1==reslt){
 			return 1;
 		}
@@ -206,4 +206,28 @@ bool checkDate (Calendario struc){
     else
         return true;
 }
-    
+
+void printHelloMsg (string str, int n){
+	
+	int i=0;
+	
+	if(n<0){
+		cout<<"Bye..."<<endl;
+		return;
+	}
+	
+	do{
+		cout<<str<<endl;
+		i++;
+	}while(i<n);
+	
+	return;
+}
+
+int serieCuadrados(int serie){
+	if ((serie==0)||(serie==1))
+			return 1;
+	else
+		return serieCuadrados(serie-1) + pow (serie,2);
+}
+
